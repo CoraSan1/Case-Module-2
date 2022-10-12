@@ -2,22 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dd7f35d3-5909-42de-b561-562b0aafce6a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Case Module 2.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/RunMain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/io/Write_Read.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/manage/ManageAccount.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/manage/ManageProducts.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/menu/MenuDangNhap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/Products.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/admin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/validate/ValiDate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fileText/giohang.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileText/giohang.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fileText/product.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileText/product.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fileText/text.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileText/text.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/manage/ManageAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/manage/ManageAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/menu/MenuDangNhap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menu/MenuDangNhap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validate/ValiDate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/validate/ValiDate.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,5 +76,15 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.IndexOutOfBoundsException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

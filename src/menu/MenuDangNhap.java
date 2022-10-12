@@ -14,12 +14,14 @@ public class MenuDangNhap {
         while (true) {
             System.out.println("1. Đăng nhập");
             System.out.println("2. Đăng ký");
+            System.out.println("3. Thoát");
+
             int choice = 0;
             while (choice < 1 || choice > 2) {
                 try {
                     choice = Integer.parseInt(sc.nextLine());
                     if (choice < 1 || choice > 2) {
-                        System.out.println("Bạn chỉ được chọn 1 hoặc 2 thôi");
+                        System.out.println("Bạn chỉ được chọn 1 hoặc 2 hoặc 3 thôi");
                     }
                 } catch (NumberFormatException e) {
                     System.out.println("Nhập số !");

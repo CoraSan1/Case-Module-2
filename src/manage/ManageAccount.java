@@ -24,11 +24,13 @@ public class ManageAccount {
     Scanner sc = new Scanner(System.in);
 
     ManageProducts manageProducts = new ManageProducts();
+    ManageAccount manageAccount;
 
     ValiDate valiDate = new ValiDate();
 
 
     public void login() {
+        manageAccount = new ManageAccount();
         System.out.println("Nhập username: ");
         String username = sc.nextLine();
 
@@ -36,11 +38,13 @@ public class ManageAccount {
         String password = sc.nextLine();
         int choice = 0;
         if (username.equals("Admin") && password.equals("123")) {
+            System.out.println("ĐĂNG NHẬP THÀNH CÔNG!!!");
             menuAdmin();
             ++choice;
         } else {
             for (int i = 0; i < users.size(); i++) {
                 if (users.get(i).getUsername().equals(username) && users.get(i).getPassword().equals(password)) {
+                    System.out.println("ĐĂNG NHẬP THÀNH CÔNG!!!");
                     menu_User();
                     ++choice;
                 }
@@ -57,18 +61,19 @@ public class ManageAccount {
         while (true) {
             System.out.println("1. Thêm sản phẩm");
             System.out.println("2. Hiển thị sản phẩm");
-            System.out.println("3. Nhập tên sản phẩm muốn sửa");
+            System.out.println("3. Sửa sản phẩm");
             System.out.println("4. Xóa sản phẩm");
             System.out.println("5. Hiển thị tổng doanh thu ");
             System.out.println("6. Hiển thị thông tin người dùng");
             System.out.println("7. Xóa tài khoản người dùng");
-            System.out.println("8. Quay về màn hình đăng nhặp");
+            System.out.println("8. Rút tiền khỏi hệ thống");
+            System.out.println("9. Quay về màn hình đăng nhặp");
             int choice = 0;
-            while (choice < 1 || choice > 7) {
+            while (choice < 1 || choice > 9) {
                 try {
                     choice = Integer.parseInt(sc.nextLine());
-                    if (choice < 1 || choice > 8) {
-                        System.out.println("Chọn từ 1-8 thôi đại ca ơiiii :'(");
+                    if (choice < 1 || choice > 9) {
+                        System.out.println("Chọn từ 1-9 thôi đại ca ơiiii :'(");
                     }
                 } catch (NumberFormatException e) {
                     System.out.println("Nhập số đi mà đại ca @@");
@@ -81,9 +86,11 @@ public class ManageAccount {
                         manageProducts.showProduct();
                         break;
                     case 3:
+                        manageProducts.showProduct();
                         manageProducts.editProduct();
                         break;
                     case 4:
+                        manageProducts.showProduct();
                         manageProducts.removeProduct();
                         break;
                     case 5:
@@ -93,9 +100,13 @@ public class ManageAccount {
                         showAccount();
                         break;
                     case 7:
+                        showAccount();
                         removeAccount();
                         break;
                     case 8:
+                        RutTien();
+                        break;
+                    case 9:
                         MenuDangNhap.menuDangNhap.ManHinhDangNhap();
                         break;
                 }
@@ -108,14 +119,15 @@ public class ManageAccount {
             System.out.println("1. Hiểm thị danh sách sản phẩm");
             System.out.println("2. Thêm sản phẩm vào giỏ hàng");
             System.out.println("3. Xóa sản phẩm trong giỏ hàng");
-            System.out.println("4. Hiển sản phẩm trong giỏ hàng và tổng tiền");
-            System.out.println("5. Quay về màn hình đăng nhập");
+            System.out.println("4. Hiển sản phẩm trong giỏ hàng");
+            System.out.println("5. Thanh toán");
+            System.out.println("6. Quay về màn hình đăng nhập");
             int choice = 0;
-            while (choice < 1 || choice > 5) {
+            while (choice < 1 || choice > 6) {
                 try {
                     choice = Integer.parseInt(sc.nextLine());
-                    if (choice < 1 || choice > 5) {
-                        System.out.println("Chọn từ 1- 5 thôi");
+                    if (choice < 1 || choice > 6) {
+                        System.out.println("Chọn từ 1- 6 thôi");
                     }
                 } catch (NumberFormatException e) {
                     System.out.println("Nhập số thôi");
@@ -131,12 +143,16 @@ public class ManageAccount {
                     buyProduct();
                     break;
                 case 3:
+                    showGioHang();
                     removeProduct();
                     break;
                 case 4:
                     showGioHang();
                     break;
                 case 5:
+                    tongTien();
+                    break;
+                case 6:
                     MenuDangNhap.menuDangNhap.ManHinhDangNhap();
             }
 
@@ -170,7 +186,7 @@ public class ManageAccount {
                     System.out.println("username đã tồn tại");
                     username = null;
                 }
-            }catch (Exception e){
+            } catch (Exception e) {
                 System.out.println("");
             }
 
@@ -200,14 +216,18 @@ public class ManageAccount {
     public void buyProduct() {
         System.out.println("Nhập tên sản phẩm muốn thêm vào giỏ hàng: ");
         String name = sc.nextLine();
+        int choice = 0;
 
         for (int i = 0; i < manageProducts.products.size(); i++) {
             if (manageProducts.getProducts().get(i).getName().equals(name)) {
                 gioHang.add(manageProducts.getProducts().get(i));
                 System.out.println("Thêm sản phẩm thành công");
-            } else {
-                System.out.println("Sản phẩm không tồn tại!");
+                ++choice;
+                break;
             }
+        }
+        if (choice == 0) {
+            System.out.println("Sản phẩm không tồn tại!");
         }
 
         write_read.write(file, users);
@@ -217,26 +237,30 @@ public class ManageAccount {
     public void removeProduct() {
         System.out.println("Nhập tên sản phẩm muốn xóa khỏi giỏ hàng: ");
         String name = sc.nextLine();
+        int choice = 0;
 
-        for (int i = 0; i < manageProducts.products.size(); i++) {
-            if (manageProducts.products.get(i).getName().equals(name)) {
+        for (int i = 0; i < gioHang.size(); i++) {
+            if (gioHang.get(i).getName().equals(name)) {
                 gioHang.remove(i);
                 System.out.println("Xóa sản phẩm thành công");
-            } else {
-                System.out.println("Sản phẩm không tồn tại!");
+                ++choice;
             }
+        }
+        if (choice==0){
+
+                System.out.println("Sản phẩm không tồn tại!");
+
         }
         write_read.write(file, users);
         write_read2.write(file2, gioHang);
     }
 
     public void showGioHang() {
+        write_read2.read(file2);
         for (int i = 0; i < gioHang.size(); i++) {
             System.out.println(gioHang.get(i));
         }
-        System.out.println("Tổng tiền giỏ hàng: " + tongTien());
-        ThanhToan_xxx();
-        gioHang = new ArrayList<>();
+
     }
 
 
@@ -246,26 +270,47 @@ public class ManageAccount {
         for (int i = 0; i < gioHang.size(); i++) {
             tongTien += gioHang.get(i).getPrice();
         }
-        return tongTien;
-
-
-    }
-
-    public void ThanhToan_xxx() {
+        System.out.println("Tổng tiền giỏ hàng: " + tongTien);
         System.out.println("Bạn muốn mua ko");
         System.out.println("y/n");
         String x = sc.nextLine();
         if (x.equalsIgnoreCase("y")) {
             System.out.println("Đã thanh toán");
+            gioHang = new ArrayList<>();
         }
+        return tongTien;
     }
 
-    public void DoanhThu() {
+    public double DoanhThu() {
+        users = write_read.read(file);
+        gioHang = write_read2.read(file2);
         double doanhthu = 0;
-        for (int i = 0; i < users.size(); i++) {
-            doanhthu += tongTien();
+
+        for (int j = 0; j < gioHang.size(); j++) {
+            doanhthu += gioHang.get(j).getPrice();
         }
+
         System.out.println("Doanh thu của bạn là: " + doanhthu);
+        return doanhthu;
+    }
+
+    public void RutTien() {
+        System.out.println("Nhập mật khẩu admin");
+        String password = sc.nextLine();
+        if (password.equals("123")) {
+            if (DoanhThu() == 0) {
+                System.out.println("làm đéo gì có tiền ");
+            } else {
+                for (int i = 0; i < gioHang.size(); i++) {
+                    gioHang = new ArrayList<>();
+                }
+                System.out.println("Đã rút tiền");
+                write_read2.write(file2, gioHang);
+            }
+        } else {
+            System.out.println("Bạn không phải admin");
+        }
+
     }
 
     public void showAccount() {

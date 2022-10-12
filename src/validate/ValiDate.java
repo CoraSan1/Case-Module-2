@@ -20,7 +20,7 @@ public class ValiDate {
     }
 
     public String DinhDang_DangKyMK(String str){
-        Pattern pattern = Pattern.compile("[\\w]{6}");
+        Pattern pattern = Pattern.compile("[\\w]{6,}");
         Matcher matcher = pattern.matcher(str);
 
         if (matcher.find()){
